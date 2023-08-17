@@ -1,0 +1,20 @@
+🔖 
+📽️ https://www.youtube.com/watch?v=6l8RWV8D-Yo
+📝 DO THE ASSIGNMENTS ALONG WITH THE CHAPTERS MOFO!
+
+REFER TO THE REACT DOCS, THEY ARE AMAZING
+
+React is used for single-page applications. Pages don't reload after every action. You can use React in multi-page 
+applications as well.
+React is a UI library based on components.
+
+With traditional HTML & JS, it's very difficult to manage apps if we have a lot of complicated contents.
+Each web page can be broken into components (parts). YouTube has video lists, each video list has a video, each
+video has a thumbnail, title.
+
+A DOM tree can be very vast, but a component tree has 
+1> Easy structure
+2> Reusability
+
+When our app is running, our React code is converted to HTML, CSS and JS.
+
