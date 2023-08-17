@@ -1,10 +1,17 @@
 import "./App.css";
 
 function App() {
+
+  let name = "React App";
+  console.log("App");
+
     return (
-        <>
-            <div>Hi</div>
-        </>
+        <div className="App">
+          <div className={name}>
+            Hello World
+            {name}
+          </div>
+        </div>
     );
 }
 

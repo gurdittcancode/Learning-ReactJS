@@ -1,4 +1,4 @@
-🔖 
+🔖 43:05
 📽️ https://www.youtube.com/watch?v=6l8RWV8D-Yo
 📝 DO THE ASSIGNMENTS ALONG WITH THE CHAPTERS MOFO!
 
@@ -16,5 +16,4 @@ A DOM tree can be very vast, but a component tree has
 1> Easy structure
 2> Reusability
 
-When our app is running, our React code is converted to HTML, CSS and JS.
-
+To write javascript expressions in JSX, use {}
