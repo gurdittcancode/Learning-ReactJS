@@ -1,4 +1,4 @@
-🔖 43:05
+🔖 Chapter - 3
 📽️ https://www.youtube.com/watch?v=6l8RWV8D-Yo
 📝 DO THE ASSIGNMENTS ALONG WITH THE CHAPTERS MOFO!
 
@@ -17,3 +17,9 @@ A DOM tree can be very vast, but a component tree has
 2> Reusability
 
 To write javascript expressions in JSX, use {}
+
+-> Inline styles must be passed as an object
+props ✅
+
+-> props are read-only. Don't reassign them through onClick etc
+-> When you nest a component inside another component, access the inner component using props.children or {children}
