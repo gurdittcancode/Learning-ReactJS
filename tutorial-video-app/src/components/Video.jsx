@@ -1,15 +1,15 @@
 import "./styles/Video.css";
 
-function Video({ title, channel, views, time }) {
-
+function Video({ title, channel, views, time, verified, id }) {
     return (
         <div className="container">
             <div className="pic">
-                <img src="https://picsum.photos/160/90" alt="" />
+                <img src={`https://picsum.photos/id/${id}/160/90`} alt="random pic" />
             </div>
 
             <div className="title">{title}</div>
-            <div className="channel">{channel}</div>
+            <div className="channel">{channel} {verified && "✔️"}</div>
+            {/* But if verified is a number or a string, that number could be printed */}
             <div className="views">
                 {views} views <span>.</span> {time}
             </div>

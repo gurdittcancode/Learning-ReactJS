@@ -1,4 +1,4 @@
-🔖 Chapter - 3
+🔖 Chapter - 4
 📽️ https://www.youtube.com/watch?v=6l8RWV8D-Yo
 📝 DO THE ASSIGNMENTS ALONG WITH THE CHAPTERS MOFO!
 
@@ -22,4 +22,16 @@ To write javascript expressions in JSX, use {}
 props ✅
 
 -> props are read-only. Don't reassign them through onClick etc
+-> If you want to pass another oject as props to a component, you can use the spread operator to do that.
 -> When you nest a component inside another component, access the inner component using props.children or {children}
+
+How to conditionally render stuff and how to render lists in React?
+Conditionally adding check mark if a channel is verified 
+1. Use if-else block - but there are simpler methods
+2. Use ternary operator
+3. (BEST) use logical AND short-circuiting
+
+Rendering videos using a list, by creating a videos array. Adding an id attribute to videos to generate different thumbnails.
+
+* Each list child should have a unique key prop. So that React vDOM can uniquely target a child and only re-render it if 
+it has been changed. Your database generates an ID, if front-end only project, use uuid() to generate.
