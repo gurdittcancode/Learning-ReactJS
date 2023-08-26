@@ -1,4 +1,4 @@
-🔖 Chapter - 4
+🔖 Chapter - 5
 📽️ https://www.youtube.com/watch?v=6l8RWV8D-Yo
 📝 DO THE ASSIGNMENTS ALONG WITH THE CHAPTERS MOFO!
 
@@ -35,3 +35,9 @@ Rendering videos using a list, by creating a videos array. Adding an id attribut
 
 * Each list child should have a unique key prop. So that React vDOM can uniquely target a child and only re-render it if 
 it has been changed. Your database generates an ID, if front-end only project, use uuid() to generate.
+
+Creating a thumbnail component.
+Adding different functionality to the buttons. One will log, the other will alert
+
+Across React components, we have event bubbling. If we click on a playbutton, the onClick of App is also getting triggered.
+So, in the onClick function of button, do event.stopPropagation
