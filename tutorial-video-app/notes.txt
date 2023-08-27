@@ -40,4 +40,12 @@ Creating a thumbnail component.
 Adding different functionality to the buttons. One will log, the other will alert
 
 Across React components, we have event bubbling. If we click on a playbutton, the onClick of App is also getting triggered.
-So, in the onClick function of button, do event.stopPropagation
+So, in the onClick function of button, do event.stopPropagation()
+
+useState
+
+If you change a variable normally and want to see the changes, you must re-render the components. How?
+Make that variable a state variable. useState is a hook -> an external function which we are using. State is a temporary
+memory in React. The state is getting stored globally somewhere, and the hook is referring to that.
+
+* You don't directly change a state variable.

@@ -1,4 +1,4 @@
-export const videos = [
+export const videosDB = [
   {
     id: 1,
     title: "Node.js tutorial",
@@ -23,4 +23,4 @@ export const videos = [
     channel: "gurdittcancode",
     verified: true,
   },
-]
+];
