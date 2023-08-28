@@ -48,4 +48,16 @@ If you change a variable normally and want to see the changes, you must re-rende
 Make that variable a state variable. useState is a hook -> an external function which we are using. State is a temporary
 memory in React. The state is getting stored globally somewhere, and the hook is referring to that.
 
-* You don't directly change a state variable.
+* YOU NEVER CHANGE A STATE VARIABLE DIRECTLY, ALWAYS MAKE A COPY, MODIFY THAT COPY AND SET THAT UPDATED COPY AS NEW STATE
+
+                                ADDING FORMS
+How to get values from form inputs? evt.target.value
+You have a state variable, how to pass it to parent(state lifting)?
+
+Pass the setVideos function as a prop to your AddVideo component, do stuff in AV, call the setVideos function in 
+AV, it will update the state (STATE LIFTING). You also have to pass the videos array as well, which is getting inefficient.
+
+So, in your parent component, create a function and assume it expects a new video, then update the State in that function. 
+Pass this new function as a prop to child, and in the child, call this function and pass the new video.
+
+After we submit the form, how to clear the inputs? to-do...

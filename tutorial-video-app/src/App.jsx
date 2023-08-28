@@ -3,37 +3,25 @@ import "./App.css";
 import { useState } from "react";
 import Video from "./components/Video";
 import PlayButton from "./components/PlayButton";
-import Counter from "./components/Counter";
+// import Counter from "./components/Counter";
 import { videosDB } from "./data.js";
+import AddVideo from "./components/AddVideo";
 
 function App() {
   console.log("Rendering App");
 
   const [videos, setVideos] = useState(videosDB);
 
+  function addVideos(vid) {
+    setVideos([...videos, { ...vid, id: videos.length + 1 }]);
+  }
+
   return (
     <div className="App">
-      <div>Videos</div>
-
-      <button
-        onClick={() => {
-          //REMEMBER TO NOT UPDATE THE STATE VARIABLE DIRECTLY
-
-          setVideos([
-            ...videos,
-            {
-              id: videos.length + 1,
-              title: "MongoDB tutorial",
-              views: "1M",
-              time: "30 minutes ago",
-              channel: "gurdittcancode",
-              verified: true,
-            },
-          ]);
-        }}
-      >
-        Add Video
-      </button>
+      <div>
+        <h1>Videos</h1>
+        <AddVideo addVideos={addVideos} videos={videos} />
+      </div>
 
       {videos.map((video) => (
         <Video key={Math.floor(Math.random() * 100 + 1)} {...video}>
@@ -45,10 +33,6 @@ function App() {
           </PlayButton>
         </Video>
       ))}
-
-      <div style={{ clear: "both" }}>
-        <Counter />
-      </div>
     </div>
   );
 }
