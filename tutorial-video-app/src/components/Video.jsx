@@ -15,9 +15,7 @@ function Video({ title, channel, views, time, verified, id, children }) {
       <div className="views">
         {views} views <span>.</span> {time}
       </div>
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </div>
   );
 }

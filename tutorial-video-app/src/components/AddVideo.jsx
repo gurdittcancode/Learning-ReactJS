@@ -1,18 +1,26 @@
 import { useState } from "react";
 import "./styles/AddVideo.css";
 
+const initialVideoState = {
+  time: "Just now",
+  channel: "gurdittcancode",
+  verified: true,
+  title: "",
+  views: "",
+};
+
 function AddVideo({ addVideos }) {
-  const [video, setVideo] = useState({
-    time: "Just now",
-    channel: "gurdittcancode",
-    verified: true,
-  });
+  const [video, setVideo] = useState(initialVideoState);
+
+  //Why are we creating a state variable? You could achieve the same thing using 2 variables
+  //but it would be a bit time-consuming to do that. This is easier.
 
   function handleSubmit(evt) {
     evt.preventDefault();
     console.log(video);
 
     addVideos(video);
+    setVideo(initialVideoState);
   }
 
   function handleChange(evt) {
@@ -20,8 +28,6 @@ function AddVideo({ addVideos }) {
     // console.log(evt.target.name, evt.target.value);
     setVideo({ ...video, [evt.target.name]: evt.target.value });
     //LHS of an object can't be an expression, so add [] to tell JS to evaluate it first
-
-    // console.log(video);
   }
 
   return (
@@ -31,6 +37,7 @@ function AddVideo({ addVideos }) {
         name="title"
         onChange={handleChange}
         placeholder="video title"
+        value={video.title}
       />
       {/* {video.title} */}
       <input
@@ -38,6 +45,7 @@ function AddVideo({ addVideos }) {
         name="views"
         onChange={handleChange}
         placeholder="video views"
+        value={video.views}
       />
       <button onClick={handleSubmit}>Add Video</button>
     </form>

@@ -4,8 +4,7 @@
 
 REFER TO THE REACT DOCS, THEY ARE AMAZING
 
-React is used for single-page applications. Pages don't reload after every action. You can use React in multi-page 
-applications as well.
+React is used for single-page applications. Pages don't reload after every action. You can use React in multi-page applications as well.
 React is a UI library based on components.
 
 With traditional HTML & JS, it's very difficult to manage apps if we have a lot of complicated contents.
@@ -16,14 +15,12 @@ A DOM tree can be very vast, but a component tree has
 1> Easy structure
 2> Reusability
 
-To write javascript expressions in JSX, use {}
-
 -> Inline styles must be passed as an object
 props ✅
 
 -> props are read-only. Don't reassign them through onClick etc
 -> If you want to pass another oject as props to a component, you can use the spread operator to do that.
--> When you nest a component inside another component, access the inner component using props.children or {children}
+-> When you nest a component inside another component, access the inner component using props.children
 
 How to conditionally render stuff and how to render lists in React?
 Conditionally adding check mark if a channel is verified 
@@ -33,11 +30,10 @@ Conditionally adding check mark if a channel is verified
 
 Rendering videos using a list, by creating a videos array. Adding an id attribute to videos to generate different thumbnails.
 
-* Each list child should have a unique key prop. So that React vDOM can uniquely target a child and only re-render it if 
-it has been changed. Your database generates an ID, if front-end only project, use uuid() to generate.
+* Each list child should have a unique key prop. So that React vDOM can uniquely target a child and only re-render it if it has been changed. 
+Your database generates an ID automatically, if front-end only project, use uuid() to generate.
 
-Creating a thumbnail component.
-Adding different functionality to the buttons. One will log, the other will alert
+Creating a thumbnail component. Adding different functionality to the buttons. One will log, the other will alert
 
 Across React components, we have event bubbling. If we click on a playbutton, the onClick of App is also getting triggered.
 So, in the onClick function of button, do event.stopPropagation()
@@ -60,4 +56,15 @@ AV, it will update the state (STATE LIFTING). You also have to pass the videos a
 So, in your parent component, create a function and assume it expects a new video, then update the State in that function. 
 Pass this new function as a prop to child, and in the child, call this function and pass the new video.
 
-After we submit the form, how to clear the inputs? to-do...
+How to clear the inputs after submitting? 1. Set the input value = ""
+2. Use controlled forms (components) -> When a component's variables depend on a State variable.
+But if your state variable doesn't exist, the value is set to undefined. Meaning, you are first saying it's uncontrolled then you are forcing it to be controlled. So give a default value. (Warning dega warna)
+
+You can hard-code input values to "" using DOM methods as well, but that could lead to inconsistencies in the future.
+
+This is a bit complicated, so to solve ths problem we have Context API and Redux.
+To pass state to sibling: pass data to parent, and from parent to other child
+
+* Moving the list of videos to their separate components
+
+🔴🔴🔴 COMPLETE ALL YOUR ASSIGNMENTS TILL NOW
