@@ -1,7 +1,7 @@
 function Education({ education }) {
   return (
     <>
-      <h2>Education</h2>
+      <h2 style={{textDecoration: "underline "}}>Education</h2>
       {education.map((edu) => {
         return (
           <div style={{display: "flex", justifyContent: "space-between"}} key={Math.floor(Math.random() * 10)}>

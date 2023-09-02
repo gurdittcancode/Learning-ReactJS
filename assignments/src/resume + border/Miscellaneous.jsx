@@ -2,25 +2,29 @@ function Miscallaneous({ skills, langs, hobbies }) {
   return (
     <div>
       <div className="skills">
-        <h3>Skills</h3>
+        <h2 style={{ textDecoration: "underline " }}>Skills</h2>
         <ul>
-          {skills.map((skill) => (
-            <li>{skill}</li>
+          {skills.map((skill, idx) => (
+            <li key={idx}>{skill}</li>
           ))}
         </ul>
       </div>
 
       <div className="langs">
-        <h3>Languages</h3>
+        <h2 style={{ textDecoration: "underline " }}>Languages</h2>
         <ul>
-            {langs.map(lang => <li>{lang}</li>)}
+          {langs.map((lang, idx) => (
+            <li key={idx}>{lang}</li>
+          ))}
         </ul>
       </div>
 
       <div className="hobbies">
-        <h3>Hobbies</h3>
+        <h2 style={{ textDecoration: "underline " }}>Hobbies</h2>
         <ul>
-            {hobbies.map(hobby => <li>{hobby}</li>)}
+          {hobbies.map((hobby, idx) => (
+            <li key={idx}>{hobby}</li>
+          ))}
         </ul>
       </div>
     </div>

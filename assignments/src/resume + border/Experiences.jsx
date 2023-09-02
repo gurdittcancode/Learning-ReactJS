@@ -1,7 +1,7 @@
 function Experiences({ experiences }) {
   return (
     <div>
-      <h2>Experience</h2>
+      <h2 style={{ textDecoration: "underline " }}>Experience</h2>
       {experiences.map((experience) => {
         return (
           <>
