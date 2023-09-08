@@ -1,5 +1,4 @@
-🔖 Chapter - 5
-📽️ https://www.youtube.com/watch?v=6l8RWV8D-Yo
+🔖 https://youtu.be/6l8RWV8D-Yo?t=18286
 📝 DO THE ASSIGNMENTS ALONG WITH THE CHAPTERS MOFO!
 
 REFER TO THE REACT DOCS, THEY ARE AMAZING
@@ -58,7 +57,8 @@ Pass this new function as a prop to child, and in the child, call this function 
 
 How to clear the inputs after submitting? 1. Set the input value = ""
 2. Use controlled forms (components) -> When a component's variables depend on a State variable.
-But if your state variable doesn't exist, the value is set to undefined. Meaning, you are first saying it's uncontrolled then you are forcing it to be controlled. So give a default value. (Warning dega warna)
+But if your state variable doesn't exist, the value is set to undefined. Meaning, you are first saying it's 
+uncontrolled then you are forcing it to be controlled. So give a default value. (Warning dega warna)
 
 You can hard-code input values to "" using DOM methods as well, but that could lead to inconsistencies in the future.
 
@@ -67,4 +67,19 @@ To pass state to sibling: pass data to parent, and from parent to other child
 
 * Moving the list of videos to their separate components
 
-🔴🔴🔴 COMPLETE ALL YOUR ASSIGNMENTS TILL NOW
+Adding Delete functionality by passing the id from Video component and using filter() function.
+
+Edit functionality -> When we click on edit button, we can send the id to the App component and find the video from there. 
+But, how do we tell the AddVideo component to pre-fill the data with the selected video? 
+
+How do we write logic that the editingVideo's title and views are pre-filled in the inputs? Should we always set video = editingVideo?
+But that will ruin your original logic.
+
+Also, how do we set it up to get triggered only when we click on edit video? Us component mein kuch apne aap hona chahiye (apne aap detect)
+
+Introducing, useEffect() ✨
+useEffect(function, dependencies) -> runs when your component mounts and also when something inside the dependencies array changes.
+If array is empty, it only runs once.
+
+useEffect hook (from WDS) 🔴 We have created 3 buttons, and whenever we click on a button and change the resourceType, 
+we want to fetch data from a json placeholder API. We need a "side-effect" to fire when the resourceType changes

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./styles/AddVideo.css";
 
 const initialVideoState = {
@@ -9,7 +9,7 @@ const initialVideoState = {
   views: "",
 };
 
-function AddVideo({ addVideos }) {
+function AddVideo({ addVideos, editingVideo, updateVideos }) {
   const [video, setVideo] = useState(initialVideoState);
 
   //Why are we creating a state variable? You could achieve the same thing using 2 variables
@@ -17,18 +17,29 @@ function AddVideo({ addVideos }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log(video);
+    // console.log(video);
 
-    addVideos(video);
+    if (editingVideo) {
+      updateVideos(video);
+    } else {
+      addVideos(video);
+    }
+
     setVideo(initialVideoState);
   }
 
   function handleChange(evt) {
     evt.stopPropagation();
-    // console.log(evt.target.name, evt.target.value);
     setVideo({ ...video, [evt.target.name]: evt.target.value });
     //LHS of an object can't be an expression, so add [] to tell JS to evaluate it first
   }
+
+  useEffect(() => {
+    console.log("useEffect triggered");
+
+    if (editingVideo) setVideo(editingVideo);
+  }, [editingVideo]);
+  //editingVideo jab bhi badlega to ye useEffect chalega
 
   return (
     <form>
@@ -47,7 +58,9 @@ function AddVideo({ addVideos }) {
         placeholder="video views"
         value={video.views}
       />
-      <button onClick={handleSubmit}>Add Video</button>
+      <button onClick={handleSubmit}>
+        {editingVideo ? "Edit" : "Add"} Video
+      </button>
     </form>
   );
 }
