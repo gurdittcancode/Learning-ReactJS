@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { videosDB } from "./data.js";
 import AddVideo from "./components/AddVideo";
 import VideoList from "./components/VideoList";
-import axios from "axios";
 
 function App() {
   const [videos, setVideos] = useState(videosDB);
@@ -31,28 +30,20 @@ function App() {
     setVideos(newVids);
   }
 
-  //   useEffect hook practice
-
-  // const [resourceType, setResourceType] = useState("posts");
-
-  console.log("render");
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://jsonplaceholder.typicode.com/${resourceType}`)
-  //     .then((response) => console.log(response));
-  // }, [resourceType]);
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
+  // UNDERSTAIND USEEFFECT HOOK!
+  const [count, setCount] = useState(0);
+  const [divColor, setDivColor] = useState("blue");
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-  }, []);
-  //This will run on very first render, so we are adding an event listener on the window.
+    //The code that we want to run
+    console.log("The count is:", count);
+
+    //Optional return function
+
+    return () => {
+      console.log("Don't change color!");
+      setDivColor("blue");
+    };
+  }, [count]); //The dependency array
 
   return (
     // <div className="App">
@@ -73,17 +64,19 @@ function App() {
     //     />
     //   </div>
     // </div>
-    <div>
-      {/* UNDERSTANDING USEEFFECT */}
-      {/* <div>
-        <button onClick={() => setResourceType("posts")}>Posts</button>
-        <button onClick={() => setResourceType("users")}>Users</button>
-        <button onClick={() => setResourceType("comments")}>Comments</button>
-      </div>
-      <h1>{resourceType}</h1> */}
 
-      <h1>{windowWidth}</h1>
-    </div>
+    // UNDERSTANDING USEEFFECT
+    <>
+      <div>
+        <h1>You've clicked this button {count} times</h1>
+        <button onClick={() => setCount(count + 1)}>DON'T CLICK!!!</button>
+
+        <div
+          style={{ height: "200px", width: "200px", backgroundColor: divColor }}
+        ></div>
+        <button onClick={() => setDivColor("green")}>Change Color</button>
+      </div>
+    </>
   );
 }
 

@@ -78,8 +78,16 @@ But that will ruin your original logic.
 Also, how do we set it up to get triggered only when we click on edit video? Us component mein kuch apne aap hona chahiye (apne aap detect)
 
 Introducing, useEffect() ✨
-useEffect(function, dependencies) -> runs when your component mounts and also when something inside the dependencies array changes.
-If array is empty, it only runs once.
+Things happening as a consequence. We want something to happen as a result of count changing.
 
-useEffect hook (from WDS) 🔴 We have created 3 buttons, and whenever we click on a button and change the resourceType, 
-we want to fetch data from a json placeholder API. We need a "side-effect" to fire when the resourceType changes
+It accepts 2 things -> callback function and dependency array. Dependency array tells useEffect what to listen to.
+There is an optional return function as well.
+
+No matter what you provide in dependency array, it will run at least once when the component mounts.
+
+Clean-up function => Before the new count is logged, we get the clean-up message. useEffect first runs the code on first mount. 
+Whenever something in the dependency array changes, the useEffect destroys itself and it will run the clean-up function before 
+doing so. Then it will recreate itself with the new value. If this is confusing and you are wondering why the cleanup function 
+ran before callback, think like this ->
+
+we interact -> state changes -> component re-renders, causing useEffect to clean itself up (running that function) -> DOM is updated on re-render -> callback executes because it's a side-effect of the CHANGE IN STATE + RE-RENDER, NOT THE CLICKING OF BUTTON!!
