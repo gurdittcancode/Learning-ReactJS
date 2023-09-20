@@ -21,6 +21,7 @@ function AddVideo({ addVideos, editingVideo, updateVideos }) {
 
     if (editingVideo) {
       updateVideos(video);
+      
     } else {
       addVideos(video);
     }

@@ -1,4 +1,4 @@
-🔖 https://youtu.be/6l8RWV8D-Yo?t=18286
+🔖 https://youtu.be/6l8RWV8D-Yo?t=19900
 📝 DO THE ASSIGNMENTS ALONG WITH THE CHAPTERS MOFO!
 
 REFER TO THE REACT DOCS, THEY ARE AMAZING
@@ -15,7 +15,7 @@ A DOM tree can be very vast, but a component tree has
 2> Reusability
 
 -> Inline styles must be passed as an object
-props ✅
+props ✅z
 
 -> props are read-only. Don't reassign them through onClick etc
 -> If you want to pass another oject as props to a component, you can use the spread operator to do that.
@@ -91,3 +91,29 @@ doing so. Then it will recreate itself with the new value. If this is confusing 
 ran before callback, think like this ->
 
 we interact -> state changes -> component re-renders, causing useEffect to clean itself up (running that function) -> DOM is updated on re-render -> callback executes because it's a side-effect of the CHANGE IN STATE + RE-RENDER, NOT THE CLICKING OF BUTTON!!
+
+
+                                    useReducer
+Redux is a famous state-management libary. Right now, managing all these states is difficult. Props, state lifting etc.
+What if there was some way to maintain this globally. Redux isn't present inside React by default, but useReducer helps us do that.
+
+Redux is a very big thing.
+
+1. props are increasing
+2. edit, delete and add videos are just updating the state. Can we club them together?
+useReducer does this.
+
+Reducer is a function which returns the next state!
+
+You don't have to use useReducer everywhere, only use where there are a lot of functions, like in this videos app.
+If it is simple, use State. use Reducer sparingly.
+
+* We have clubbed together the functions related to a state. As our project grows, we will create a folder called
+reducers. If you want, instead of passing editingVideo, addVideo as separate props, just pass the dispatch function 
+and call dispatch in the child components.
+
+How is dispatch() calling the reducer function? hmm
+
+ 🔴🔴🔴 Understand Redux from https://www.youtube.com/playlist?list=PL2PkZdv6p7ZlhDX22YEd2Il9jdgCv13vM
+
+                        CONTEXT API (to do...)
