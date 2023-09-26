@@ -1,18 +1,14 @@
 import { useState, useReducer } from "react";
-// import Video from "./components/Video";
-// import PlayButton from "./components/PlayButton";
-// import Counter from "./components/Counter";
 import { videosDB } from "./data.js";
 import AddVideo from "./components/AddVideo";
 import VideoList from "./components/VideoList";
 
 function App() {
   // const [videos, setVideos] = useState(videosDB);
+  const [editingVideo, setEditingVideo] = useState(null);
 
   const [videos, dispatch] = useReducer(videoReducer, videosDB);
   //name of variable, dispatch function = reducer function, initial state
-
-  const [editingVideo, setEditingVideo] = useState(null);
 
   function videoReducer(videos, action) {
     //videos is the (previous) state
@@ -37,25 +33,17 @@ function App() {
     }
   }
 
-  function addVideos(vid) {
-    dispatch({ type: "ADD", payload: vid });
-    //this is the convention, you have to follow it
-    // setVideos([...videos, { ...vid, id: videos.length + 1 }]);
-  }
+  // dispatch({ type: "ADD", payload: vid });
+  //this is the convention, you have to follow it
 
-  function deleteVideo(id) {
-    dispatch({ type: "DELETE", payload: id });
+  // function deleteVideo(id) {
+  //   dispatch({ type: "DELETE", payload: id });
     // setVideos(videos.filter((video) => video.id !== id));
-  }
+  // }
 
   function editVideo(id) {
     console.log("Editing vid #", id);
     setEditingVideo(videos.find((video) => video.id === id));
-  }
-
-  function updateVideos(video) {
-    dispatch({ type: "UPDATE", payload: video });
-    // setVideos(newVids);
   }
 
   return (
@@ -63,16 +51,15 @@ function App() {
       <div>
         <h1>Videos</h1>
         <AddVideo
-          addVideos={addVideos}
+          dispatch={dispatch}
           videos={videos}
           editingVideo={editingVideo}
-          updateVideos={updateVideos}
         />
       </div>
       <div>
         <VideoList
           videos={videos}
-          deleteVideo={deleteVideo}
+          dispatch={dispatch}
           editVideo={editVideo}
         />
       </div>

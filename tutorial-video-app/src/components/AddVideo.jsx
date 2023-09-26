@@ -9,7 +9,7 @@ const initialVideoState = {
   views: "",
 };
 
-function AddVideo({ addVideos, editingVideo, updateVideos }) {
+function AddVideo({ dispatch, editingVideo}) {
   const [video, setVideo] = useState(initialVideoState);
 
   //Why are we creating a state variable? You could achieve the same thing using 2 variables
@@ -20,10 +20,10 @@ function AddVideo({ addVideos, editingVideo, updateVideos }) {
     // console.log(video);
 
     if (editingVideo) {
-      updateVideos(video);
+      dispatch({ type: "UPDATE", payload: video });
       
     } else {
-      addVideos(video);
+      dispatch({ type: "ADD", payload: video });
     }
 
     setVideo(initialVideoState);
