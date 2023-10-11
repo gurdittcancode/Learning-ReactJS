@@ -1,48 +1,27 @@
+import { resumeData } from "./data/resumeData";
+import ContactInfo from "./ContactInfo";
+import Education from "./Education";
+import Experience from "./Experience";
+import Skills from "./Skills";
+import Miscellaneous from "./Miscellaneous";
 import { useState } from "react";
-import { resumeData } from "./data/resumeData.js";
-import Education from "./Education.jsx";
-import Experiences from "./Experiences.jsx";
-import Miscallaneous from "./Miscellaneous.jsx";
-import ResumeEditor from "./ResumeEditor.jsx";
 
 function Resume() {
-  const [education, setEducation] = useState(resumeData.education);
-  const [experience, setExperience] = useState(resumeData.experience);
-  const [skills, setSkills] = useState(resumeData.skills);
-  const [languages, setLanguages] = useState(resumeData.languages);
-  const [hobbies, setHobbies] = useState(resumeData.hobbies);
-
-  function updateEdu(newEd) {
-    setEducation([newEd, ...education]);
-  }
-
-  function updateSkills(newSkill) {
-    setSkills([...skills, newSkill]);
-  }
+  const [resumeState, setResumeState] = useState(resumeData);
 
   return (
-    <>
-      <div className="Resume">
-        <button onClick={() => window.print()}>Print this bitch</button>
-        <div className="header" style={{ textAlign: "center" }}>
-          <h1>{resumeData.name.toUpperCase()}</h1>
-          <p>
-            {resumeData.contactInfo.email} | {resumeData.contactInfo.phone} |{" "}
-            {resumeData.contactInfo.address}
-          </p>
-        </div>
-        <p>
-          <i>{resumeData.summary}</i>
-        </p>
-        {education ? <Education education={education} /> : null}
-        {experience ? <Experiences experiences={experience} /> : null}
+    <div className="flex h-screen">
+      <div className="w-2/5 h-full bg-blue-500 flex flex-col justify-center items-center p-3">
+        <ContactInfo resumeState={resumeState} />
+      </div>
 
-        <Miscallaneous skills={skills} langs={languages} hobbies={hobbies} />
+      <div className="w-3/5 h-full p-4 flex flex-col">
+        <Education resumeState={resumeState} />
+        <Experience resumeState={resumeState} />
+        <Skills resumeState={resumeState} />
+        <Miscellaneous resumeState={resumeState} />
       </div>
-      <div>
-        <ResumeEditor updateEdu={updateEdu} updateSkills={updateSkills} />
-      </div>
-    </>
+    </div>
   );
 }
 

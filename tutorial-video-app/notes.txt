@@ -112,8 +112,6 @@ If it is simple, use State. use Reducer sparingly.
 reducers. If you want, instead of passing editingVideo, addVideo as separate props, just pass the dispatch function 
 and call dispatch in the child components.
 
-How is dispatch() calling the reducer function? hmm
-
- 🔴🔴🔴 Understand Redux from https://www.youtube.com/playlist?list=PL2PkZdv6p7ZlhDX22YEd2Il9jdgCv13vM
+How is dispatch() calling the reducer function? (Hidden implementation in React)
 
                         CONTEXT API (to do...)

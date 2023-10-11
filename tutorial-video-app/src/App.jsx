@@ -38,7 +38,7 @@ function App() {
 
   // function deleteVideo(id) {
   //   dispatch({ type: "DELETE", payload: id });
-    // setVideos(videos.filter((video) => video.id !== id));
+  // setVideos(videos.filter((video) => video.id !== id));
   // }
 
   function editVideo(id) {
@@ -57,11 +57,7 @@ function App() {
         />
       </div>
       <div>
-        <VideoList
-          videos={videos}
-          dispatch={dispatch}
-          editVideo={editVideo}
-        />
+        <VideoList videos={videos} dispatch={dispatch} editVideo={editVideo} />
       </div>
     </div>
   );

@@ -1,25 +1,19 @@
-function Education({ education }) {
+function Education({ resumeState }) {
   return (
-    <>
-      <h2 style={{textDecoration: "underline "}}>Education</h2>
-      {education.map((edu) => {
+    <div className="education my-3">
+      <p className="text-3xl font-bold">Education</p>
+      {resumeState.education.map((edu, idx) => {
         return (
-          <div style={{display: "flex", justifyContent: "space-between"}} key={Math.floor(Math.random() * 10)}>
+          <div key={idx} className="flex justify-between mt-2">
             <div>
-              <h3>{edu.school}</h3>
-              <p>
-                <i>{edu.degree}</i>
-              </p>
+              <p className="font-bold">{edu.school}</p>
+              <p className="italic">{edu.degree}</p>
             </div>
-            <div>
-              <p>
-                <i>{edu.graduationYear}</i>
-              </p>
-            </div>
+            <p>{edu.graduationYear}</p>
           </div>
         );
       })}
-    </>
+    </div>
   );
 }
 

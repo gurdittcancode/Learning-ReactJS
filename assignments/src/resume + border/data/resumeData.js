@@ -28,7 +28,6 @@ const resumeData = {
     {
       title: "Software Engineer",
       company: "Tech Solutions Inc.",
-      location: "Tech City, USA",
       startDate: "July 2020",
       endDate: "Present",
       responsibilities: [
@@ -38,7 +37,6 @@ const resumeData = {
     {
       title: "Software Development Intern",
       company: "Code Wizards",
-      location: "Coder's Town, USA",
       startDate: "May 2019",
       endDate: "August 2019",
       responsibilities: [
@@ -46,6 +44,7 @@ const resumeData = {
       ],
     },
   ],
+  
   skills: ["JavaScript", "React", "Node.js", "Python", "HTML/CSS", "Git"],
   languages: ["English (Fluent)", "Spanish (Intermediate)"],
   hobbies: ["Hiking", "Photography", "Playing musical instruments"],

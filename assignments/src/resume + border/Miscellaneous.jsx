@@ -1,34 +1,13 @@
-function Miscallaneous({ skills, langs, hobbies }) {
+function Miscellaneous({ resumeState }) {
   return (
-    <div>
-      <div className="skills">
-        <h2 style={{ textDecoration: "underline " }}>Skills</h2>
-        <ul>
-          {skills.map((skill, idx) => (
-            <li key={idx}>{skill}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="langs">
-        <h2 style={{ textDecoration: "underline " }}>Languages</h2>
-        <ul>
-          {langs.map((lang, idx) => (
-            <li key={idx}>{lang}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="hobbies">
-        <h2 style={{ textDecoration: "underline " }}>Hobbies</h2>
-        <ul>
-          {hobbies.map((hobby, idx) => (
-            <li key={idx}>{hobby}</li>
-          ))}
-        </ul>
+    <div className="languages-hobbies">
+      <p className="font-bold text-3xl">Languages and Hobbies</p>
+      <div className="flex mt-2">
+        <p>{resumeState.languages.map((lang) => `${lang}, `)}</p>
+        <p>{resumeState.hobbies.map((hobby) => `${hobby}, `)}</p>
       </div>
     </div>
   );
 }
 
-export default Miscallaneous;
+export default Miscellaneous;
