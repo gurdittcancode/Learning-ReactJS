@@ -1,13 +1,18 @@
-.dark {
-    background-color: gray;
-    color: white;
-}
-
 .container {
     width: 15em;
     margin: 0 0.2em;
     float: left;
     position: relative;
+}
+
+.container.lightMode {
+    color: black;
+    background-color: #ccc;
+}
+
+.container.darkMode {
+    background-color: black;
+    color: #ccc;
 }
 
 .pic img {
@@ -17,12 +22,10 @@
 .title {
     font-weight: bold;
     margin-bottom: 1em;
-    color: white;
 }
 
 .channel, .views {
     font-size: 0.7em;
-    color: #ccc;
     margin-bottom: 0.2em;
 }
 

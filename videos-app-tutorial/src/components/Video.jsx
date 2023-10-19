@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import "./styles/Video.css";
+import { ThemeContext } from "../context/ThemeContext";
 
 function Video({
   title,
@@ -11,8 +13,11 @@ function Video({
   dispatch,
   editVideo,
 }) {
+
+  const theme = useContext(ThemeContext);
+
   return (
-    <div className="container">
+    <div className={`container ${theme}`}>
       <button
         className="close"
         onClick={() => dispatch({ type: "DELETE", payload: id })}

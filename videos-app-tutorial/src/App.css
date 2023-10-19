@@ -1,0 +1,16 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 22px;
+}
+
+.App.lightMode {
+  background-color: #ccc;
+  color: black;
+}
+
+.App.darkMode {
+  background-color: black;
+  color: white;
+}

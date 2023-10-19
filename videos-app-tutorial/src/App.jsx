@@ -1,10 +1,12 @@
-import { useState, useReducer } from "react";
-import { videosDB } from "./data.js";
+import { useState, useReducer, useContext } from "react";
+import { videosDB } from "./data/data";
 import AddVideo from "./components/AddVideo";
 import VideoList from "./components/VideoList";
+import { ThemeContext } from "./context/ThemeContext.jsx";
+
+import "./App.css";
 
 function App() {
-  // const [videos, setVideos] = useState(videosDB);
   const [editingVideo, setEditingVideo] = useState(null);
 
   const [videos, dispatch] = useReducer(videoReducer, videosDB);
@@ -33,9 +35,6 @@ function App() {
     }
   }
 
-  // dispatch({ type: "ADD", payload: vid });
-  //this is the convention, you have to follow it
-
   // function deleteVideo(id) {
   //   dispatch({ type: "DELETE", payload: id });
   // setVideos(videos.filter((video) => video.id !== id));
@@ -46,20 +45,35 @@ function App() {
     setEditingVideo(videos.find((video) => video.id === id));
   }
 
+  const theme = useContext(ThemeContext);
+  const [mode, setMode] = useState(theme);
+
   return (
-    <div className="App">
-      <div>
-        <h1>Videos</h1>
-        <AddVideo
-          dispatch={dispatch}
-          videos={videos}
-          editingVideo={editingVideo}
-        />
+    <ThemeContext.Provider value={mode}>
+      <button
+        onClick={() => {
+          mode == "lightMode" ? setMode("darkMode") : setMode("lightMode");
+        }}
+      >
+        Change Theme
+      </button>
+      <div className={`App ${mode}`}>
+        <div>
+          <AddVideo
+            dispatch={dispatch}
+            videos={videos}
+            editingVideo={editingVideo}
+          />
+        </div>
+        <div>
+          <VideoList
+            videos={videos}
+            dispatch={dispatch}
+            editVideo={editVideo}
+          />
+        </div>
       </div>
-      <div>
-        <VideoList videos={videos} dispatch={dispatch} editVideo={editVideo} />
-      </div>
-    </div>
+    </ThemeContext.Provider>
   );
 }
 
