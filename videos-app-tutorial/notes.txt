@@ -1,0 +1,8 @@
+lost the previous notes.txt file because i'm retarded.
+
+Continued...
+                    CONTEXT WITH REDUCER
+Refactoring the entire code with Context api
+
+                    Custom hooks
+Hooks can only be called inside a functional component. 

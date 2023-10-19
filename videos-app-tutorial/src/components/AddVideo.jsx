@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./styles/AddVideo.css";
+import useVideoDispatch from "../hooks/useVideoDispatch";
 
 const initialVideoState = {
   time: "Just now",
@@ -9,11 +10,10 @@ const initialVideoState = {
   views: "",
 };
 
-function AddVideo({ dispatch, editingVideo}) {
-  const [video, setVideo] = useState(initialVideoState);
+function AddVideo({ editingVideo }) {
 
-  //Why are we creating a state variable? You could achieve the same thing using 2 variables
-  //but it would be a bit time-consuming to do that. This is easier.
+  const dispatch = useVideoDispatch();
+  const [video, setVideo] = useState(initialVideoState);
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -21,7 +21,6 @@ function AddVideo({ dispatch, editingVideo}) {
 
     if (editingVideo) {
       dispatch({ type: "UPDATE", payload: video });
-      
     } else {
       dispatch({ type: "ADD", payload: video });
     }
@@ -40,7 +39,6 @@ function AddVideo({ dispatch, editingVideo}) {
 
     if (editingVideo) setVideo(editingVideo);
   }, [editingVideo]);
-  //editingVideo jab bhi badlega to ye useEffect chalega
 
   return (
     <form>
@@ -51,7 +49,6 @@ function AddVideo({ dispatch, editingVideo}) {
         placeholder="video title"
         value={video.title}
       />
-      {/* {video.title} */}
       <input
         type="text"
         name="views"
