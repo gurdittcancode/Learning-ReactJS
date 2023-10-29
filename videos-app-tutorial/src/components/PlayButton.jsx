@@ -3,7 +3,6 @@ import "./styles/PlayButton.css";
 import { ThemeContext } from "../context/ThemeContext";
 
 function PlayButton({ children, onPlay, onPause }) {
-  // let playing = false; //don't use this appraoch, use State instead.
   const [playing, setPlaying] = useState(false);
 
   function handleClick(evt) {

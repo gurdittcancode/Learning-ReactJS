@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./styles/AddVideo.css";
 import useVideoDispatch from "../hooks/useVideoDispatch";
 
@@ -11,9 +11,9 @@ const initialVideoState = {
 };
 
 function AddVideo({ editingVideo }) {
-
   const dispatch = useVideoDispatch();
   const [video, setVideo] = useState(initialVideoState);
+  const inputRef = useRef(null);
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -31,18 +31,26 @@ function AddVideo({ editingVideo }) {
   function handleChange(evt) {
     evt.stopPropagation();
     setVideo({ ...video, [evt.target.name]: evt.target.value });
-    //LHS of an object can't be an expression, so add [] to tell JS to evaluate it first
   }
 
   useEffect(() => {
-    console.log("useEffect triggered");
-
     if (editingVideo) setVideo(editingVideo);
+    // inputRef.current.focus()
+    // inputRef.current.value = "INPUT REF";
+
+    inputRef.current.placeholder = "";
+
+    "type here".split("").forEach((char, idx) => {
+      setTimeout(() => {
+        inputRef.current.placeholder += char;
+      }, 150 * idx);
+    });
   }, [editingVideo]);
 
   return (
     <form>
       <input
+        ref={inputRef}
         type="text"
         name="title"
         onChange={handleChange}

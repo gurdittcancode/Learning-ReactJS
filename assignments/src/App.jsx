@@ -7,14 +7,13 @@
 // import Lists from "./list/Lists";
 // import ImageHover from "./events/ImageHover";
 // import Resume from "./resume + border/Resume";
-
-import CustomHook from "./custom hook/CustomHook";
-
+// import CustomHook from "./custom hook/CustomHook";
+import RefHook from "./useref with custom hook/RefHook";
 
 function App() {
   return (
     <div className="h-screen w-screen">
-      <CustomHook />
+      <RefHook />
     </div>
   );
 }

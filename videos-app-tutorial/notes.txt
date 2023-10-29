@@ -1,8 +1,20 @@
 lost the previous notes.txt file because i'm retarded.
 
 Continued...
+
                     CONTEXT WITH REDUCER
 Refactoring the entire code with Context api
 
                     Custom hooks
-Hooks can only be called inside a functional component. 
+Hooks can only be called inside a functional component.
+
+                    
+                        USEREF HOOK
+Every time a state variable changes and a component re-renders, variables declared with let and const are also
+reinitialized!!
+What if we want to make a variable which doesn't cause re-renders, but maintains it values across re-renders?
+useRef ✨
+
+useRef returns an object. So to use value of numOfClicks, we need to use numOfClicks.current.
+useRef helps us select DOM elements, something which we can't do using normal React. To link a ref to a DOM element, 
+pass the variable in the ref attribute of the HTML element.

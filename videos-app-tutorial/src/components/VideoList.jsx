@@ -1,10 +1,7 @@
 import Video from "./Video";
 import PlayButton from "./PlayButton";
-import useGetVideos from "../hooks/useGetVideos";
 
-function VideoList({ editVideo }) {
-
-  const videos = useGetVideos();
+function VideoList({ editVideo, videos }) {
 
   return (
     <>
