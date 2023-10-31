@@ -21,7 +21,6 @@ function Counter() {
         Then the second one runs, takes number = 1, and sets it to 2. And the third one...
     */
    console.log(number);
-   //still showing original value? Belongs to a snapshot in time. Value of number doesn't get updated until next render.
 
     numOfClicks.current++;
     console.log(numOfClicks.current);
