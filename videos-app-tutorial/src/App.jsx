@@ -5,11 +5,11 @@ import { videosDB } from "./data/data";
 import { ThemeContext } from "./context/ThemeContext.jsx";
 import VideoDispatchContext from "./context/VideoDispatchContext";
 import videoReducer from "./reducer/videoReducer";
+import Counter from "./components/Counter";
 
 import "./App.css";
 // import useLocalStorage from "./useLocalStorage";
 // import useUpdateLogger from "./useUpdateLogger";
-import Counter from "./components/Counter";
 
 function App() {
   const [editingVideo, setEditingVideo] = useState(null);

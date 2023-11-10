@@ -30,7 +30,7 @@ function Counter() {
   return (
     <>
       <h1>
-        {number} {numOfClicks.current}
+        {number} {numOfClicks.current} clicks
       </h1>
       <button onClick={handleClick}>+1</button>
     </>
