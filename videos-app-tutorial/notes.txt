@@ -1,5 +1,7 @@
 lost the previous notes.txt file because i'm retarded.
 
+⌚ t = https://youtu.be/6l8RWV8D-Yo?t=27401
+
 Continued...
 
                     CONTEXT WITH REDUCER
@@ -18,3 +20,30 @@ useRef ✨
 useRef returns an object. So to use value of numOfClicks, we need to use numOfClicks.current.
 useRef helps us select DOM elements, something which we can't do using normal React. To link a ref to a DOM element, 
 pass the variable in the ref attribute of the HTML element.
+
+                    USEEFFECT ADVANCED (WITH API)
+React wants our components to be pure(same output with same input). That's why we get 2 console.logs, because strictMode
+calls the components again.
+We want some side-effects. For eg, when the page loads, a video should autoplay etc.
+mounting - first render, unmounting, render - when component loads again with new data.
+
+We could also write our functionality outside a useEffect and by itself in the component, but if it runs
+before the DOM elements have loaded, it will give an error (referencing null). useEffect always runs AFTER elements have been loaded.
+
+useEffect dependency array mein bas unhi cheezon ko rakho, which will actually change.
+
+1. callback
+2. dependency array
+3. clean-up function - isme do the opposite of what you did above
+
+// useEffect(() => {
+  //   const idx = setInterval(() => {
+  //     console.log("Video playing", id);
+  //   }, 3000);
+
+  //   return () => {
+  //     clearInterval(idx);
+  //   };
+
+  //   //this function runs when the component unmounts. When we delete the video, it is removed from the DOM
+  // }, [id]);

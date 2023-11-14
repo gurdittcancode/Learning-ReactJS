@@ -1,11 +1,13 @@
-import { useState, useReducer, useContext } from "react";
+import { useState, useEffect, useReducer, useContext } from "react";
 import AddVideo from "./components/AddVideo";
 import VideoList from "./components/VideoList";
-import { videosDB } from "./data/data";
+// import { videosDB } from "./data/data";
 import { ThemeContext } from "./context/ThemeContext.jsx";
 import VideoDispatchContext from "./context/VideoDispatchContext";
 import videoReducer from "./reducer/videoReducer";
-import Counter from "./components/Counter";
+// import Counter from "./components/Counter";
+
+import axios from "axios";
 
 import "./App.css";
 // import useLocalStorage from "./useLocalStorage";
@@ -13,14 +15,24 @@ import "./App.css";
 
 function App() {
   const [editingVideo, setEditingVideo] = useState(null);
-  const [videos, dispatch] = useReducer(videoReducer, videosDB);
+  const [videos, dispatch] = useReducer(videoReducer, []);
   const theme = useContext(ThemeContext);
   const [mode, setMode] = useState(theme);
 
   function editVideo(id) {
-    console.log("Editing vid #", id);
     setEditingVideo(videos.find((video) => video.id === id));
   }
+
+  const URL = "https://my.api.mockaroo.com/videos.json.json?key=4f067a70";
+
+  useEffect(() => {
+    async function getVideos() {
+      let res = await axios.get(URL);
+      console.log(res.data);
+      dispatch({ type: "LOAD", payload: res.data });
+    }
+    getVideos();
+  }, []);
 
   // const [name, setName] = useLocalStorage("name", "");
   // useUpdateLogger(name);
@@ -29,7 +41,7 @@ function App() {
     <ThemeContext.Provider value={mode}>
       <VideoDispatchContext.Provider value={dispatch}>
         <div className={`App ${mode}`}>
-          <Counter />
+          {/* <Counter /> */}
           <button
             onClick={() => {
               mode == "lightMode" ? setMode("darkMode") : setMode("lightMode");
@@ -41,7 +53,9 @@ function App() {
             <AddVideo editingVideo={editingVideo} />
           </div>
           <div>
-            <VideoList editVideo={editVideo} videos={videos}/>
+            <VideoList editVideo={editVideo} videos={videos} />
+            {/* new video list component jisme videos will come from API in useEffect*/}
+            {/* <VideoList editVideo={editVideo}/> */}
           </div>
         </div>
       </VideoDispatchContext.Provider>

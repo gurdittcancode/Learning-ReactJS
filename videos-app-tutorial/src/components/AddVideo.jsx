@@ -35,16 +35,10 @@ function AddVideo({ editingVideo }) {
 
   useEffect(() => {
     if (editingVideo) setVideo(editingVideo);
-    // inputRef.current.focus()
-    // inputRef.current.value = "INPUT REF";
+    inputRef.current.focus();
 
-    inputRef.current.placeholder = "";
-
-    "type here".split("").forEach((char, idx) => {
-      setTimeout(() => {
-        inputRef.current.placeholder += char;
-      }, 150 * idx);
-    });
+    // inputRef.current.placeholder = "";
+    
   }, [editingVideo]);
 
   return (

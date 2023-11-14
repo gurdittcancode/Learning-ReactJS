@@ -6,6 +6,7 @@ function videoReducer(videos, action) {
       return [...videos, { ...action.payload, id: videos.length + 1 }];
 
     case "DELETE":
+      console.log("Deleting", action.payload);
       return videos.filter((video) => video.id !== action.payload);
 
     case "UPDATE": {
@@ -14,6 +15,10 @@ function videoReducer(videos, action) {
       newVids.splice(index, 1, action.payload);
     //   setEditingVideo(null);
       return newVids;
+    }
+
+    case "LOAD": {
+      return action.payload;
     }
 
     default:

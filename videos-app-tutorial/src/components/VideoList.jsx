@@ -1,20 +1,25 @@
 import Video from "./Video";
 import PlayButton from "./PlayButton";
+import {v4 as uuid} from "uuid";
 
 function VideoList({ editVideo, videos }) {
-
   return (
     <>
-      {videos.map((video) => (
-        <Video key={Math.floor(Math.random() * 100 + 1)} {...video} editVideo={editVideo}>
-          <PlayButton
-            onPlay={() => console.log(`Playing ${video.title}`)}
-            onPause={() => console.log(`Paused ${video.title}`)}
+      {videos &&
+        videos.map((video) => (
+          <Video
+            key={uuid()}
+            {...video}
+            editVideo={editVideo}
           >
-            {video.title}
-          </PlayButton>
-        </Video>
-      ))}
+            <PlayButton
+              onPlay={() => console.log(`Playing ${video.title}`)}
+              onPause={() => console.log(`Paused ${video.title}`)}
+            >
+              {video.title}
+            </PlayButton>
+          </Video>
+        ))}
     </>
   );
 }
