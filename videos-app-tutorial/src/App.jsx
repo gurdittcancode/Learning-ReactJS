@@ -54,8 +54,6 @@ function App() {
           </div>
           <div>
             <VideoList editVideo={editVideo} videos={videos} />
-            {/* new video list component jisme videos will come from API in useEffect*/}
-            {/* <VideoList editVideo={editVideo}/> */}
           </div>
         </div>
       </VideoDispatchContext.Provider>
