@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo, useCallback } from "react";
 
 function Counter() {
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState(10);
 
   let numOfClicks = useRef(0);
 
@@ -22,13 +22,27 @@ function Counter() {
 
     numOfClicks.current++;
     console.log(numOfClicks.current);
-
   }
+
+  // function fib(n) {
+  //   if (n <= 1) return n;
+  //   return fib(n - 1) + fib(n - 2);
+  // }
+
+  const fibFnMemoized = useCallback(function fib(n) {
+    if (n <= 1) return n;
+    return fib(n - 1) + fib(n - 2);
+  }, []);
+
+  const fiboMemoized = useMemo(() => {
+    //calculation function (wo value jo store karni hai)
+    return fibFnMemoized(number);
+  }, [number, fibFnMemoized]); //dependency array
 
   return (
     <>
       <h1>
-        {number} {numOfClicks.current} clicks
+        {number} | {fiboMemoized}
       </h1>
       <button onClick={handleClick}>+1</button>
     </>

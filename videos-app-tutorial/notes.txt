@@ -47,3 +47,29 @@ useEffect dependency array mein bas unhi cheezon ko rakho, which will actually c
 
   //   //this function runs when the component unmounts. When we delete the video, it is removed from the DOM
   // }, [id]);
+
+
+
+                          MEMOIZATION AND CALLBACK
+Read the docs if it isn't clear.
+
+Memoising is caching. If there is a very expensive calculation, we store the result and use the result later on.
+
+When we are re-rendering the component on every change, it's running the recursive function on each render, which is slowing down everything.
+
+But if a dependency changes, the app will slow down again, as it will calculate and store again.
+
+* If we place function inside component, then useMemo will say place it inside dep. array, but if we do that, every time function re-renders,
+fib() will be redeclared each time, making the useMemo run again and again.
+
+To memoize a function, use useCallback
+useCallback - memoize functions/callbacks
+useMemo - memoize calculations
+Otherwise, they are the same.
+
+Now, we will memoize all the components so that all of them don't render anytime a small thing is changed or the props aren't changed
+
+To memoize a function, just wrap it in memo()
+
+*** Abhi jitna memoize kiya hai, UTNE KI ZARURAT NHI HAI. React's internal working is built to seamlessly re-render.
+If you are building a huge app which is getting very slow, first step is to fix your logic. 

@@ -5,11 +5,12 @@ import VideoList from "./components/VideoList";
 import { ThemeContext } from "./context/ThemeContext.jsx";
 import VideoDispatchContext from "./context/VideoDispatchContext";
 import videoReducer from "./reducer/videoReducer";
-// import Counter from "./components/Counter";
+import Counter from "./components/Counter";
 
 import axios from "axios";
 
 import "./App.css";
+import { useCallback } from "react";
 // import useLocalStorage from "./useLocalStorage";
 // import useUpdateLogger from "./useUpdateLogger";
 
@@ -18,18 +19,24 @@ function App() {
   const [videos, dispatch] = useReducer(videoReducer, []);
   const theme = useContext(ThemeContext);
   const [mode, setMode] = useState(theme);
+  const [loading, setLoading] = useState(true);
 
-  function editVideo(id) {
-    setEditingVideo(videos.find((video) => video.id === id));
-  }
+  const editVideo = useCallback(
+    function editVideo(id) {
+      setEditingVideo(videos.find((video) => video.id === id));
+    },
+    [videos]
+  );
+
+  //this fn ain't changing so memoize it.
 
   const URL = "https://my.api.mockaroo.com/videos.json.json?key=4f067a70";
 
   useEffect(() => {
     async function getVideos() {
       let res = await axios.get(URL);
-      console.log(res.data);
       dispatch({ type: "LOAD", payload: res.data });
+      setLoading(false);
     }
     getVideos();
   }, []);
@@ -41,7 +48,7 @@ function App() {
     <ThemeContext.Provider value={mode}>
       <VideoDispatchContext.Provider value={dispatch}>
         <div className={`App ${mode}`}>
-          {/* <Counter /> */}
+          <Counter />
           <button
             onClick={() => {
               mode == "lightMode" ? setMode("darkMode") : setMode("lightMode");
@@ -52,6 +59,7 @@ function App() {
           <div>
             <AddVideo editingVideo={editingVideo} />
           </div>
+          {loading && <h1 className="text-4xl">Loading videos...</h1>}
           <div>
             <VideoList editVideo={editVideo} videos={videos} />
           </div>
