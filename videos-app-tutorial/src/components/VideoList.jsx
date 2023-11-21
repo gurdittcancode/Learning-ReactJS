@@ -10,11 +10,14 @@ function VideoList({ editVideo, videos }) {
   //since these play and pause won't change, the props to PlayButton won't change
   //so, PlayButton is truly memoized.
 
-  const memoButton = useMemo(() => (
-    <PlayButton onPlay={play} onPause={pause}>
-      Play
-    </PlayButton>
-  ), [pause, play]);
+  const memoButton = useMemo(
+    () => (
+      <PlayButton onPlay={play} onPause={pause}>
+        Play
+      </PlayButton>
+    ),
+    [pause, play]
+  );
 
   //bahar isi liye rakha hai kyunki even though PB and its props are memoized, its instances
   //may not be memoized. ffs...

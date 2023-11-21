@@ -1,4 +1,10 @@
-import { useState, useEffect, useReducer, useContext } from "react";
+import {
+  useState,
+  useEffect,
+  useReducer,
+  useContext,
+  useCallback,
+} from "react";
 import AddVideo from "./components/AddVideo";
 import VideoList from "./components/VideoList";
 // import { videosDB } from "./data/data";
@@ -6,16 +12,16 @@ import { ThemeContext } from "./context/ThemeContext.jsx";
 import VideoDispatchContext from "./context/VideoDispatchContext";
 import videoReducer from "./reducer/videoReducer";
 import Counter from "./components/Counter";
+// import useLocalStorage from "./useLocalStorage";
+// import useUpdateLogger from "./useUpdateLogger";
 
 import axios from "axios";
 
 import "./App.css";
-import { useCallback } from "react";
-// import useLocalStorage from "./useLocalStorage";
-// import useUpdateLogger from "./useUpdateLogger";
 
 function App() {
   const [editingVideo, setEditingVideo] = useState(null);
+  //keeps track of if a video is being edited
   const [videos, dispatch] = useReducer(videoReducer, []);
   const theme = useContext(ThemeContext);
   const [mode, setMode] = useState(theme);

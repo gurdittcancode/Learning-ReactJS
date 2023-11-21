@@ -1,7 +1,3 @@
-lost the previous notes.txt file because i'm retarded.
-
-⌚ t = https://youtu.be/6l8RWV8D-Yo?t=27401
-
 Continued...
 
                     CONTEXT WITH REDUCER
@@ -9,8 +5,10 @@ Refactoring the entire code with Context api
 
                     Custom hooks
 Hooks can only be called inside a functional component.
+*** You should give use prefix to a function (and thus make it a Hook) if it uses at least one Hook inside of it:
 
-                    
+---------------- The following are ESCAPE hatches, keep their use to a minimum. Try to achieve optimisation without using them too much.
+
                         USEREF HOOK
 Every time a state variable changes and a component re-renders, variables declared with let and const are also
 reinitialized!!
@@ -72,4 +70,9 @@ Now, we will memoize all the components so that all of them don't render anytime
 To memoize a function, just wrap it in memo()
 
 *** Abhi jitna memoize kiya hai, UTNE KI ZARURAT NHI HAI. React's internal working is built to seamlessly re-render.
-If you are building a huge app which is getting very slow, first step is to fix your logic. 
+If you are building a huge app which is getting very slow, first step is to fix your logic.
+
+*** console.time("iterating through array")
+    loopThroughArray();
+    console.timeEnd("iterating through array")
+    If this value is very large, you might want to memoize
